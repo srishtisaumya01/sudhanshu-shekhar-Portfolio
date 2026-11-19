@@ -125,7 +125,6 @@ export function Connect() {
 
         <footer className="mt-28 flex flex-col justify-between gap-3 border-t border-line pt-6 md:flex-row">
           <p className="label">© {new Date().getFullYear()} Sudhanshu Shekhar · Patna, India</p>
-          <p className="label">For conversations, partnerships and speaking, not job applications.</p>
         </footer>
       </div>
     </section>
