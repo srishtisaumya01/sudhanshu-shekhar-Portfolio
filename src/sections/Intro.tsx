@@ -29,8 +29,8 @@ export function Intro() {
           <div className="clip-reveal md:col-span-4 md:col-start-2 md:row-start-1">
             <Photo
               src={person.portraitAlt}
-              alt="Sudhanshu Shekhar walking through a lit garden path at night"
-              label="Second portrait"
+              alt="Sudhanshu Shekhar taking notes at a seated conference session"
+              label="Conference photo"
               className="aspect-[3/4] w-full max-w-md"
               parallax={0.05}
             />

@@ -55,7 +55,7 @@ export function Lightbox({ item, onClose }: { item: Evidence | null; onClose: ()
             <X aria-hidden />
           </button>
         </div>
-        <Photo src={item.image} alt={item.title} label={item.context} contain={item.contain} className="aspect-[4/3] max-h-[62vh] w-full bg-ink-2" eager />
+        <Photo src={item.image} alt={item.title} label={item.context} contain className="aspect-[4/3] max-h-[62vh] w-full bg-ink-2" eager />
         <p className="mt-3 text-sm text-ivory-dim">{item.context}</p>
       </div>
     </div>

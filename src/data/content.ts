@@ -15,9 +15,11 @@ export const person = {
   email: 'sudhanshushekhar1606@gmail.com',
   linkedin: 'https://www.linkedin.com/in/sudhanshu-shekhar-875a65319/',
   instagram: 'https://www.instagram.com/sudhanshushekhar556/',
-  portrait: '/assets/portrait/sudhanshu.jpg',
+  portrait: '/assets/portrait/sudhanshu-hero.jpg',
   /** Second portrait, used in the introduction. */
-  portraitAlt: '/assets/portrait/sudhanshu-walking.jpg',
+  portraitAlt: '/assets/portrait/sudhanshu-conference.jpg',
+  /** Third portrait, used beside the contact section. */
+  portraitContact: '/assets/portrait/sudhanshu-lobby.jpg',
 }
 
 export const navLinks = [
@@ -41,15 +43,15 @@ export const venturesContent = {
       { src: undefined as string | undefined, alt: 'The Skrappers team at work', caption: 'Team' },
     ],
   },
-  sudhaArpan: {
+  jigyasa: {
     label: '03 / SOCIAL IMPACT',
     role: 'Co-Founder',
-    themes: ['Grassroots sports', 'Youth empowerment', 'Community participation', 'Social development'],
-    cta: { label: 'DISCOVER SUDHA ARPAN', href: undefined as string | undefined }, // add the official NGO URL / page
+    themes: ['Education & literacy', 'Grassroots sports & youth', 'Women empowerment', 'Community welfare'],
+    cta: { label: 'DISCOVER JIGYASA', href: 'https://jigyasasamajkalyan.org/' },
     images: [
-      { src: undefined as string | undefined, alt: 'Youth playing at a Sudha Arpan sports event', caption: 'On the field' },
-      { src: undefined as string | undefined, alt: 'Community members at a Sudha Arpan initiative', caption: 'Community' },
-      { src: undefined as string | undefined, alt: 'Sudha Arpan participants', caption: 'Participants' },
+      { src: undefined as string | undefined, alt: 'Youth at a Jigyasa Samaj Kalyan Kendra sports activity', caption: 'On the field' },
+      { src: undefined as string | undefined, alt: 'Community members at a Jigyasa Samaj Kalyan Kendra initiative', caption: 'Community' },
+      { src: undefined as string | undefined, alt: 'Jigyasa Samaj Kalyan Kendra participants', caption: 'Participants' },
     ],
   },
 }
@@ -85,13 +87,6 @@ export interface EventItem {
   pending?: boolean
 }
 
-export const roleGuide: { role: Role; meaning: string }[] = [
-  { role: 'Attendee', meaning: 'Took part as a participant or guest.' },
-  { role: 'Speaker', meaning: 'Addressed the audience or sat on a panel.' },
-  { role: 'Organiser', meaning: 'Helped plan or run the event.' },
-  { role: 'Award recipient', meaning: 'Formally recognised with a named award.' },
-]
-
 export const events: EventItem[] = [
   {
     id: 'swm-2026',
@@ -108,6 +103,16 @@ export const events: EventItem[] = [
     contain: true,
   },
   {
+    id: 'saviskar',
+    category: 'University event',
+    title: 'SAVISKAR Startup event',
+    org: 'Patliputra University, South Bihar',
+    role: 'Speaker',
+    roleNote: 'Photographed addressing the audience from the podium. Date and exact session to be confirmed.',
+    image: '/assets/events/saviskar-startup-patliputra.jpg',
+    imageAlt: 'Sudhanshu Shekhar speaking from the podium at the SAVISKAR Startup event, Patliputra University, South Bihar',
+  },
+  {
     id: 'g20',
     category: 'G20-related',
     title: 'G20-related event',
@@ -118,14 +123,13 @@ export const events: EventItem[] = [
     pending: true,
   },
   {
-    id: 'brics',
-    category: 'BRICS side event',
-    title: 'BRICS side event, New Delhi',
+    id: 'india-russia',
+    category: 'Forum',
+    title: 'India–Russia forum',
     org: 'Organiser to be confirmed',
-    location: 'New Delhi',
     role: 'Role to be confirmed',
-    roleNote: 'A side event is not an official BRICS role. Exact capacity to be confirmed.',
-    imageAlt: 'Photograph from a BRICS side event in New Delhi',
+    roleNote: 'Details of the forum and Sudhanshu\'s participation will be added once confirmed.',
+    imageAlt: 'Photograph from the India–Russia forum',
     pending: true,
   },
   {
@@ -139,16 +143,21 @@ export const events: EventItem[] = [
     imageAlt: 'Photograph from an engagement at the Constitution Club of India',
     pending: true,
   },
-  {
-    id: 'awards',
-    category: 'Award',
-    title: 'Awards & recognition',
-    org: 'Awarding body to be confirmed',
-    role: 'Role to be confirmed',
-    roleNote: 'Award titles will be listed exactly as printed on the certificates.',
-    imageAlt: 'Award certificate or ceremony photograph',
-    pending: true,
-  },
+]
+
+export interface Moment {
+  id: string
+  src: string
+  alt: string
+}
+
+/** Event photographs shown without captions. People are not named until the client confirms names and permission. */
+export const moments: Moment[] = [
+  { id: 'mt1', src: '/assets/events/photo-conference-room.jpg', alt: 'Sudhanshu Shekhar with a group of people in a conference room' },
+  { id: 'mt2', src: '/assets/events/photo-university-office.jpg', alt: 'Sudhanshu Shekhar holding a framed photograph in an office' },
+  { id: 'mt3', src: '/assets/events/photo-office-1.jpg', alt: 'Sudhanshu Shekhar holding a bouquet in an office' },
+  { id: 'mt4', src: '/assets/events/photo-office-2.jpg', alt: 'Sudhanshu Shekhar with two others holding a bouquet in an office' },
+  { id: 'mt5', src: '/assets/events/photo-office-3.jpg', alt: 'Sudhanshu Shekhar with a colleague holding a bouquet in a library office' },
 ]
 
 export interface MediaItem {
@@ -165,7 +174,7 @@ export interface MediaItem {
 export const media: MediaItem[] = [
   { id: 'm1', kind: 'Podcast', title: 'Podcast appearance', source: 'Host and show to be confirmed', pending: true },
   { id: 'm2', kind: 'Interview', title: 'Interview', source: 'Publication to be confirmed', pending: true },
-  { id: 'm3', kind: 'Public talk', title: 'Public talk or panel', source: 'Forum to be confirmed', pending: true },
+  { id: 'm3', kind: 'Public talk', title: 'Speaking at a public event', source: 'Forum and date to be confirmed', thumb: '/assets/media/podium-talk.jpg', pending: true },
 ]
 
 export interface Partnership {
@@ -175,23 +184,23 @@ export interface Partnership {
   date?: string
   role: string
   outcome?: string
+  image?: string
+  imageAlt?: string
   pending?: boolean
 }
 
 export const partnerships: Partnership[] = [
   {
     id: 'p1',
-    partner: 'Partner organisation',
-    purpose: 'Purpose of the MoU or collaboration to be documented.',
-    role: 'Role to be confirmed',
-    pending: true,
+    partner: "Bharat NGO's Connect, an initiative by Jogi Foundation",
+    purpose: "Certificate of Collaboration presented at an 'NGO–CSR Partnerships for Sustainable Impact' event.",
+    role: 'Recipient of the certificate',
   },
   {
     id: 'p2',
-    partner: 'Partner organisation',
-    purpose: 'Purpose of the MoU or collaboration to be documented.',
-    role: 'Role to be confirmed',
-    pending: true,
+    partner: 'T.N. Agarwal Group of Institutions for Management and Technology',
+    purpose: 'MoU signed to set up an incubation centre in collaboration, with faculty training and student placement as further aims.',
+    role: 'Party to the MoU',
   },
 ]
 
@@ -204,14 +213,23 @@ export interface Evidence {
   context: string
   image?: string
   contain?: boolean
+  /** object-position used when the photo is cropped to fit its card. */
+  position?: string
+  /** Tailwind aspect class for the card photo (default 4:5). */
+  aspect?: string
   source?: string
   pending?: boolean
 }
 
 export const evidence: Evidence[] = [
-  { id: 'e1', type: 'Award', title: 'Award certificate', org: 'Awarding body', context: 'Certificate to be supplied, with personal details redacted.', pending: true },
-  { id: 'e2', type: 'Invitation', title: 'Event invitation', org: 'Hosting institution', context: 'Invitation to be supplied; email addresses and tokens removed.', pending: true },
-  { id: 'e3', type: 'MoU', title: 'Memorandum of understanding', org: 'Partner organisation', context: 'First page only, once the partner has given permission.', pending: true },
+  {
+    id: 'e1',
+    type: 'Award',
+    title: 'Certificate of Collaboration',
+    org: "Bharat NGO's Connect, Jogi Foundation",
+    context: "Presented at an 'NGO–CSR Partnerships for Sustainable Impact' event. Date to be confirmed.",
+    image: '/assets/partnerships/certificate-of-collaboration.jpg',
+  },
   {
     id: 'e4',
     type: 'Event photo',
@@ -221,5 +239,47 @@ export const evidence: Evidence[] = [
     context: 'Participant badge issued at the event in Patna; attendance, not an award or speaking role.',
     image: '/assets/events/swm-side-event-badge.jpg',
     contain: true,
+  },
+  {
+    id: 'e2',
+    type: 'Event photo',
+    title: 'Speaking at SAVISKAR Startup event',
+    org: 'Patliputra University, South Bihar',
+    context: 'Photograph from the podium. Date to be confirmed.',
+    image: '/assets/events/saviskar-startup-patliputra.jpg',
+    position: '10% 50%',
+  },
+  {
+    id: 'e5',
+    type: 'MoU',
+    title: 'MoU with T.N. Agarwal Group of Institutions',
+    org: 'T.N. Agarwal Group of Institutions for Management and Technology',
+    context: 'MoU signing. The stated aims are an incubation centre, faculty training and student placement. Date to be confirmed.',
+    image: '/assets/partnerships/mou-tn-agarwal-group.jpg',
+    aspect: 'aspect-[4/3]',
+  },
+  {
+    id: 'e6',
+    type: 'Event photo',
+    title: 'Round table: AI in Industrial Operations',
+    org: 'Chamber of Commerce',
+    context: 'Invited to a round-table conference on the integration of AI in industrial operations. Date to be confirmed.',
+    image: '/assets/events/roundtable-chamber-of-commerce.jpg',
+  },
+  {
+    id: 'e7',
+    type: 'Event photo',
+    title: 'Meeting with the Principal, Patna Science College',
+    org: 'Patna Science College',
+    context: 'Discussed student participation in startups, and research and policy study in science and technology. Date to be confirmed.',
+    image: '/assets/events/meeting-patna-science-college.jpg',
+  },
+  {
+    id: 'e8',
+    type: 'Event photo',
+    title: 'Meeting at Parliament House',
+    org: 'Shri Harsh Malhotra, Union Minister of Corporate Affairs and MoS, National Highways',
+    context: 'Discussed a partnership to provide work to women in his constituency. A meeting does not imply endorsement. Date to be confirmed.',
+    image: '/assets/events/meeting-parliament-house.jpg',
   },
 ]

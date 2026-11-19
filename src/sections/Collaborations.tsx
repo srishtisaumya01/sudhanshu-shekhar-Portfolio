@@ -1,4 +1,5 @@
 import { partnerships } from '../data/content'
+import { Photo } from '../components/Photo'
 import { Headline, Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
@@ -34,6 +35,7 @@ export function Collaborations() {
                     {p.date ? ` · ${p.date}` : ''}
                   </p>
                   {p.outcome && <p className="mt-2 text-sm">{p.outcome}</p>}
+                  {p.image && <Photo src={p.image} alt={p.imageAlt ?? p.partner} label={p.partner} className="mt-5 aspect-[3/2] w-full max-w-lg" />}
                 </div>
                 {p.pending && <span className="label h-fit border border-accent/50 px-2 py-1 !text-[0.65rem] !text-accent">Pending verification</span>}
               </li>

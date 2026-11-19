@@ -22,7 +22,7 @@ export function Hero({ ready }: { ready: boolean }) {
       >
         <Photo
           src={person.portrait}
-          alt="Portrait of Sudhanshu Shekhar"
+          alt="Sudhanshu Shekhar in a dark suit in front of framed black-and-white portraits"
           label="Sudhanshu's portrait (tall, 4:5 or taller)"
           className="h-full w-full [&_img]:contrast-110 [&_img]:grayscale [&_.ph]:place-items-start [&_.ph>div]:mt-8"
           parallax={0.05}
@@ -63,7 +63,7 @@ export function Hero({ ready }: { ready: boolean }) {
             development, and purposeful collaboration.
           </p>
           <p className="label mt-5 !text-sand">
-            Founder &amp; CEO, Skrappers <span className="mx-1 text-accent">·</span> Co-Founder, Sudha Arpan NGO
+            Founder &amp; CEO, Skrappers <span className="mx-1 text-accent">·</span> Co-Founder, Jigyasa Samaj Kalyan Kendra
           </p>
           <p className="label mt-2">Entrepreneur · Speaker · Sustainability Advocate</p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">

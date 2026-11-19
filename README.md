@@ -11,7 +11,7 @@ All content lives in `src/data/content.ts`. Drop files into `public/assets/<fold
 (e.g. `/assets/portrait/sudhanshu.jpg`). Items marked `pending: true` render as clearly labelled
 "pending verification" slots; remove the flag once details are verified. Nothing is invented.
 
-Still needed from the client: portrait, Skrappers and Sudha Arpan photos, verified event, award, media and MoU details
+Still needed from the client: portrait, Skrappers and Jigyasa Samaj Kalyan Kendra photos, verified event, award, media and MoU details
 (redacted evidence images, permission to publish), official venture URLs, degree names, the domain
 (canonical URL) and a 1200x630 og:image.
 

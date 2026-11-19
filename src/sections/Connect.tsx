@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { person } from '../data/content'
+import { Photo } from '../components/Photo'
 import { Button } from '../components/Button'
 import { Headline, Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
@@ -69,13 +70,22 @@ export function Connect() {
   return (
     <section id="connect" aria-label="Let's connect" className="relative overflow-hidden px-4 pb-16 pt-28 md:px-8 md:pt-48">
       <div className="mx-auto max-w-[1600px]">
+        <div className="absolute right-[4.5vw] top-32 hidden w-[19vw] max-w-[320px] md:block">
+          <Photo
+            src={person.portraitContact}
+            alt="Sudhanshu Shekhar in a dark suit standing in a hotel lobby in front of framed black-and-white portraits"
+            label="Portrait"
+            className="aspect-[3/4] w-full"
+            parallax={0.04}
+          />
+        </div>
         <Reveal>
           <SectionLabel>08 / LET&apos;S CONNECT</SectionLabel>
         </Reveal>
         <div className="mt-8">
           <Headline
             as="h2"
-            className="text-[clamp(2.8rem,11vw,12.5rem)]"
+            className="text-[clamp(2.8rem,11vw,5rem)] md:text-[clamp(4rem,8.6vw,11rem)]"
             lines={[
               'Good things happen',
               <>

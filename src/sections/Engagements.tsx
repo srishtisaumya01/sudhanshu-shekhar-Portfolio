@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
-import { events, roleGuide } from '../data/content'
+import { events, moments } from '../data/content'
 import { Photo } from '../components/Photo'
 import { Headline, Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
@@ -34,15 +34,6 @@ export function Engagements() {
               Professional and institutional engagements offer opportunities to encounter new perspectives, exchange ideas, and build
               relationships across different fields.
             </p>
-            <dl className="mt-8 space-y-3 border-t border-line pt-5 text-sm">
-              <dt className="label !text-accent">How roles are labelled</dt>
-              {roleGuide.map((r) => (
-                <div key={r.role} className="flex gap-3">
-                  <dt className="w-28 shrink-0 font-medium">{r.role}</dt>
-                  <dd className="text-ivory-dim">{r.meaning}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           {/* interactive timeline */}
@@ -71,8 +62,8 @@ export function Engagements() {
                   </h3>
                   <div id={`ev-${ev.id}`} role="region" aria-label={ev.title} className={`acc ${isOpen ? 'open' : ''}`}>
                     <div>
-                      <div className="grid gap-6 pb-8 md:grid-cols-2 md:pl-16">
-                        <Photo src={ev.image} alt={ev.imageAlt} label={ev.imageAlt} contain={ev.contain} className={`w-full ${ev.contain ? "aspect-[3/4] max-h-[520px] bg-ink-2" : "aspect-[4/3]"}`} />
+                      <div className={`grid gap-6 pb-8 md:pl-16 ${ev.image ? 'md:grid-cols-2' : ''}`}>
+                        {ev.image && <Photo src={ev.image} alt={ev.imageAlt} label={ev.imageAlt} contain={ev.contain} className={`w-full ${ev.contain ? "aspect-[3/4] max-h-[520px] bg-ink-2" : "aspect-[4/3]"}`} />}
                         <dl className="space-y-4 text-sm">
                           {ev.pending && (
                             <p className="label inline-block border border-accent/50 px-2 py-1 !text-[0.65rem] !text-accent">
@@ -92,6 +83,30 @@ export function Engagements() {
               )
             })}
           </ol>
+        </Reveal>
+
+        <Reveal className="mt-24 md:mt-32">
+          <div className="fade-up flex items-baseline justify-between gap-4 border-t border-line pt-5">
+            <p className="label !text-sand">In the room</p>
+          </div>
+          <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-6 md:gap-4">
+            {moments.map((m, i) => (
+              <li
+                key={m.id}
+                className={`fade-up h-full ${i === 0 ? 'col-span-2 md:col-span-4' : i === 1 ? 'col-span-2 md:col-span-2' : i === 4 ? 'col-span-2 md:col-span-2' : 'md:col-span-2'}`}
+                style={{ ['--d' as string]: `${i * 80}ms` }}
+              >
+                <figure className="h-full">
+                  <Photo
+                    src={m.src}
+                    alt={m.alt}
+                    label={m.alt}
+                    className={`w-full ${i === 0 ? 'aspect-[16/9]' : i === 1 ? 'aspect-[16/10] md:aspect-auto md:h-full' : i === 4 ? 'aspect-[16/10] md:aspect-[4/5]' : 'aspect-[4/5]'}`}
+                  />
+                </figure>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

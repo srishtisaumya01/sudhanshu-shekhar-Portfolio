@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Cursor } from './components/Cursor'
 import { Loader } from './components/Loader'
 import { Nav } from './components/Nav'
+import { ScrollProgress } from './components/ScrollProgress'
 import { useParallax } from './hooks/useParallax'
 import { initSmoothScroll } from './lib/scroll'
 import { Collaborations } from './sections/Collaborations'
@@ -22,6 +23,13 @@ export default function App() {
   return (
     <>
       <Loader onDone={() => setReady(true)} />
+      <a
+        href="#about"
+        className="fixed left-4 top-4 z-[110] -translate-y-24 bg-sand px-4 py-2 text-sm text-ink focus:translate-y-0"
+      >
+        Skip to content
+      </a>
+      <ScrollProgress />
       <Cursor />
       <Nav />
       <main>

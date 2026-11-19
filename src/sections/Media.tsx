@@ -4,6 +4,9 @@ import { Photo } from '../components/Photo'
 import { Headline, Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
+// items without a thumbnail or link stay in content.ts until the real content is supplied
+const shown = media.filter((m) => m.thumb || m.link)
+
 export function Media() {
   return (
     <section id="media" aria-label="Media" className="bg-ink-2 px-4 py-24 md:px-8 md:py-40">
@@ -31,9 +34,10 @@ export function Media() {
         </Reveal>
 
         <Reveal className="mt-14 grid gap-6 md:mt-20 md:grid-cols-3">
-          {media.map((m, i) => {
+          {shown.map((m, i) => {
             const card = (
               <>
+                {m.thumb && (
                 <div className="relative overflow-hidden">
                   <Photo
                     src={m.thumb}
@@ -45,7 +49,8 @@ export function Media() {
                     <Play size={16} fill="currentColor" aria-hidden />
                   </span>
                 </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
+                )}
+                <div className={`flex items-start justify-between gap-3 ${m.thumb ? 'mt-4' : 'border-t border-line pt-5'}`}>
                   <div>
                     <p className="label !text-accent">
                       {m.kind}

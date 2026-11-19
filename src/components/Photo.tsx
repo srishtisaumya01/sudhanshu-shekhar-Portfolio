@@ -9,10 +9,12 @@ interface Props {
   parallax?: number
   eager?: boolean
   contain?: boolean
+  /** CSS object-position for cropped photos, e.g. '12% 50%'. */
+  position?: string
 }
 
 /** Real photo when supplied, otherwise an unmistakably labelled placeholder. */
-export function Photo({ src, alt, label, className = '', parallax, eager, contain }: Props) {
+export function Photo({ src, alt, label, className = '', parallax, eager, contain, position }: Props) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <div
@@ -26,6 +28,7 @@ export function Photo({ src, alt, label, className = '', parallax, eager, contai
             alt={alt}
             loading={eager ? 'eager' : 'lazy'}
             decoding="async"
+            style={position ? { objectPosition: position } : undefined}
             className={`h-full w-full ${contain ? 'object-contain' : 'object-cover object-[50%_30%]'}`}
           />
         ) : (
