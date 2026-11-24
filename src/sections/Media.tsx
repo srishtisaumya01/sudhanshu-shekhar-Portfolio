@@ -1,5 +1,7 @@
-import { ArrowUpRight, Play } from 'lucide-react'
-import { media } from '../data/content'
+import { useCallback, useState } from 'react'
+import { ArrowUpRight, Maximize2, Play } from 'lucide-react'
+import { media, recognitions, type Evidence } from '../data/content'
+import { Lightbox } from '../components/Lightbox'
 import { Photo } from '../components/Photo'
 import { Headline, Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
@@ -8,6 +10,9 @@ import { SectionLabel } from '../components/SectionLabel'
 const shown = media.filter((m) => m.thumb || m.link)
 
 export function Media() {
+  const [active, setActive] = useState<Evidence | null>(null)
+  const close = useCallback(() => setActive(null), [])
+
   return (
     <section id="media" aria-label="Media" className="bg-ink-2 px-4 py-24 md:px-8 md:py-40">
       <div className="mx-auto max-w-[1600px]">
@@ -78,7 +83,46 @@ export function Media() {
             )
           })}
         </Reveal>
+
+        <Reveal className="mt-24 md:mt-36">
+          <div className="fade-up flex items-baseline justify-between gap-4 border-t border-line pt-5">
+            <p className="label !text-sand">Speaking &amp; recognition</p>
+            <p className="label hidden md:block">Tap a plaque to enlarge</p>
+          </div>
+          <ul className="mt-10 flex flex-col gap-16 md:flex-row md:items-start md:gap-8">
+            {recognitions.map((r, i) => (
+              <li
+                key={r.id}
+                className="fade-up md:basis-0"
+                style={{ ['--d' as string]: `${i * 120}ms`, flexGrow: r.ratio ?? 0.7 }}
+              >
+                <p className="label !text-accent md:min-h-[2.4rem]">0{i + 1} · {r.org}</p>
+                <h3 className="display mt-2 text-3xl md:min-h-[2.1em] md:text-4xl">{r.title}</h3>
+                <button
+                  onClick={() => setActive(r)}
+                  aria-label={`Enlarge: ${r.title}`}
+                  className="group relative mt-4 block w-full bg-sand p-2.5 text-left shadow-[0_30px_60px_-24px_rgb(0_0_0/0.9)] transition-transform duration-700 ease-out hover:!rotate-0 hover:-translate-y-2 md:p-3"
+                  style={{ rotate: `${r.tilt ?? 0}deg` }}
+                >
+                  <img
+                    src={r.image}
+                    alt={`${r.title}: ${r.context}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="block h-auto w-full"
+                    style={{ filter: 'saturate(0.92) contrast(1.04)' }}
+                  />
+                  <span className="absolute bottom-5 right-5 grid h-10 w-10 place-items-center bg-ink/80 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <Maximize2 size={16} aria-hidden />
+                  </span>
+                </button>
+                <p className="mt-5 max-w-sm text-sm text-ivory-dim">{r.context}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
+      <Lightbox item={active} onClose={close} />
     </section>
   )
 }

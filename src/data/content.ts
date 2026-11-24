@@ -77,9 +77,9 @@ export interface EventItem {
   org: string
   date?: string
   location?: string
-  role: Role
+  role?: Role
   /** What Sudhanshu actually did, in plain words. */
-  roleNote: string
+  roleNote?: string
   image?: string
   imageAlt: string
   /** Show the whole image (documents, badges) instead of cropping it. */
@@ -124,13 +124,13 @@ export const events: EventItem[] = [
   },
   {
     id: 'india-russia',
-    category: 'Forum',
-    title: 'India–Russia forum',
-    org: 'Organiser to be confirmed',
-    role: 'Role to be confirmed',
-    roleNote: 'Details of the forum and Sudhanshu\'s participation will be added once confirmed.',
-    imageAlt: 'Photograph from the India–Russia forum',
-    pending: true,
+    category: 'Youth forum',
+    title: 'II Russian–Indian Youth Forum 2026',
+    org: 'Badge shows the Embassy of the Russian Federation in India and the Ministry of Youth Affairs and Sports, Government of India',
+    date: '16–17 June 2026',
+    image: '/assets/events/russian-indian-youth-forum-badge.jpg',
+    imageAlt: 'Delegate badge for the II Russian-Indian Youth Forum 2026, 16 to 17 June, with the name Sudhanshu Shekhar handwritten',
+    contain: true,
   },
   {
     id: 'constitution-club',
@@ -206,7 +206,7 @@ export const partnerships: Partnership[] = [
 
 export interface Evidence {
   id: string
-  type: 'Award' | 'Invitation' | 'Event photo' | 'MoU' | 'Podcast' | 'Documentation'
+  type: 'Award' | 'Recognition' | 'Invitation' | 'Event photo' | 'MoU' | 'Podcast' | 'Documentation'
   title: string
   org: string
   date?: string
@@ -217,6 +217,10 @@ export interface Evidence {
   position?: string
   /** Tailwind aspect class for the card photo (default 4:5). */
   aspect?: string
+  /** width / height of the photo, used to keep prints in a row the same height. */
+  ratio?: number
+  /** slight rotation (degrees) for the print look */
+  tilt?: number
   source?: string
   pending?: boolean
 }
@@ -281,5 +285,39 @@ export const evidence: Evidence[] = [
     org: 'Shri Harsh Malhotra, Union Minister of Corporate Affairs and MoS, National Highways',
     context: 'Discussed a partnership to provide work to women in his constituency. A meeting does not imply endorsement. Date to be confirmed.',
     image: '/assets/events/meeting-parliament-house.jpg',
+  },
+]
+
+/** Plaques and trophies shown as a shelf in the Media section. Text is taken from what is printed on each object. */
+export const recognitions: Evidence[] = [
+  {
+    id: 'r1',
+    type: 'Recognition',
+    title: 'Keynote Speaker, MaterialSpark 2025',
+    org: 'MatES, IIT Patna',
+    context: 'Plaque thanking him for "illuminating our gathering with your warmth and presence at MatES IIT Patna".',
+    image: '/assets/media/keynote-materialspark-2025.jpg',
+    ratio: 0.753,
+    tilt: -1.2,
+  },
+  {
+    id: 'r2',
+    type: 'Recognition',
+    title: 'Guest of Honour',
+    org: 'Indian Institute of Technology Patna',
+    context: 'Plaque with best wishes and a "token of love for your exceptional mentorship". Event and date to be confirmed.',
+    image: '/assets/media/guest-of-honour-iit-patna.jpg',
+    ratio: 0.599,
+    tilt: 1,
+  },
+  {
+    id: 'r3',
+    type: 'Recognition',
+    title: 'Seed funding, Startup Bihar',
+    org: 'Startup Cell, Lokanayak Jai Prakash Institute of Technology, Chapra',
+    context: 'Trophy reads: seed funded by Startup Bihar with the amount of 10 Lac, Sudhanshu Shekhar, Skrapper.',
+    image: '/assets/media/seed-funding-startup-bihar.jpg',
+    ratio: 0.568,
+    tilt: -0.8,
   },
 ]

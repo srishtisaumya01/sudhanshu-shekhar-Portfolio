@@ -73,8 +73,8 @@ export function Engagements() {
                           <Meta k="Organisation" v={ev.org} />
                           {ev.date && <Meta k="Date" v={ev.date} />}
                           {ev.location && <Meta k="Location" v={ev.location} />}
-                          <Meta k="Role" v={ev.role} />
-                          <p className="border-l border-line pl-3 text-ivory-dim">{ev.roleNote}</p>
+                          {ev.role && <Meta k="Role" v={ev.role} />}
+                          {ev.roleNote && <p className="border-l border-line pl-3 text-ivory-dim">{ev.roleNote}</p>}
                         </dl>
                       </div>
                     </div>
